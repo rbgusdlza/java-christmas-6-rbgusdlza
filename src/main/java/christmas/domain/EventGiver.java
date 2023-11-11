@@ -1,7 +1,8 @@
 package christmas.domain;
 
+import christmas.validator.DomainValidator;
+
 public class EventGiver {
-    private static final int STANDARD_PURCHASE_AMOUNT = 10_000;
     private static final int STANDARD_PURCHASE_AMOUNT_FOR_EVENT = 120_000;
 
     private final int totalPurchaseAmount;
@@ -11,16 +12,16 @@ public class EventGiver {
     }
 
     public Menu awardBonusMerchandise(int totalPurchaseAmount) {
-        if (totalPurchaseAmount >= STANDARD_PURCHASE_AMOUNT_FOR_EVENT) {
-            return Menu.CHAMPAGNE;
+        if (totalPurchaseAmount < STANDARD_PURCHASE_AMOUNT_FOR_EVENT) {
+            return null;
         }
-        return null;
+        return Menu.CHAMPAGNE;
     }
 
     public Badge awardBadge(int totalDiscountAmount) {
-        if (totalPurchaseAmount >= STANDARD_PURCHASE_AMOUNT) {
-            return new Badge(totalDiscountAmount);
+        if (DomainValidator.isTotalPurchaseAmountBelowThreshold(totalPurchaseAmount)) {
+            return null;
         }
-        return null;
+        return new Badge(totalDiscountAmount);
     }
 }
