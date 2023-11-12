@@ -6,11 +6,11 @@ public class EventGiver {
     private EventGiver() {
     }
 
-    public static Menu awardBonusMerchandise(int totalPurchaseAmount) {
+    public static int awardBonusMerchandise(int totalPurchaseAmount) {
         if (totalPurchaseAmount < STANDARD_PURCHASE_AMOUNT_FOR_EVENT) {
-            return null;
+            return 0;
         }
-        return Menu.CHAMPAGNE;
+        return Menu.CHAMPAGNE.getPrice();
     }
 
     public static Badge awardBadge(int totalPurchaseAmount, int totalDiscountAmount) {

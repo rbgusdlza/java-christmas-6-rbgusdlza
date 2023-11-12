@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.exception.ErrorMessage;
+import christmas.constant.ErrorMessage;
 
 public enum Menu {
     MUSHROOM_SOUP("appetizer", 6_000, "양송이수프"),

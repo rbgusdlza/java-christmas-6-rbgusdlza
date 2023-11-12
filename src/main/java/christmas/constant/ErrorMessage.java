@@ -1,7 +1,7 @@
-package christmas.exception;
+package christmas.constant;
 
 public enum ErrorMessage {
-    INVALID_INPUT("[ERROR] 잘못된 입력입니다.");
+    INVALID_INPUT("잘못된 입력입니다.");
 
     private final String message;
 
@@ -10,6 +10,6 @@ public enum ErrorMessage {
     }
 
     public String getMessage() {
-        return message;
+        return "[ERROR] " + message;
     }
 }

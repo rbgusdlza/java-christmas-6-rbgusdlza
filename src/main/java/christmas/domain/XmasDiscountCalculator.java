@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import christmas.exception.ErrorMessage;
+import christmas.constant.ErrorMessage;
 
 public class XmasDiscountCalculator {
     private final int STANDARD_DISCOUNT_AMOUNT = 1_000;
