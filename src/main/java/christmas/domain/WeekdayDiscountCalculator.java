@@ -4,12 +4,12 @@ import christmas.exception.ErrorMessage;
 import christmas.validator.WeekendChecker;
 
 public class WeekdayDiscountCalculator {
-    private final int WEEKDAY_DISCOUNT_AMOUNT = 2_023;
+    private static final int WEEKDAY_DISCOUNT_AMOUNT = 2_023;
 
-    public WeekdayDiscountCalculator() {
+    private WeekdayDiscountCalculator() {
     }
 
-    public int calculateWeekdayDiscount(int visitDay, int desertCount) {
+    public static int calculateWeekdayDiscount(int visitDay, int desertCount) {
         isValidCount(desertCount);
         if (!WeekendChecker.isWeekend(visitDay)) {
             return 0;
@@ -17,7 +17,7 @@ public class WeekdayDiscountCalculator {
         return WEEKDAY_DISCOUNT_AMOUNT * desertCount;
     }
 
-    private void isValidCount(int desertCount) {
+    private static void isValidCount(int desertCount) {
         if (desertCount < 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
