@@ -1,7 +1,6 @@
 package christmas.domain;
 
 import christmas.exception.ErrorMessage;
-import christmas.validator.DomainValidator;
 import java.time.DayOfWeek;
 import java.time.LocalDate;
 
@@ -11,13 +10,18 @@ public class WeekdayDiscountCalculator {
     public WeekdayDiscountCalculator() {
     }
 
-    public int calculateWeekdayDiscount(int totalPurchaseAmount, int desertCount) {
-        if (DomainValidator.isTotalPurchaseAmountBelowThreshold(totalPurchaseAmount)) {
-            return 0;
-        }
+    public int calculateWeekdayDiscount(LocalDate visitDate, int desertCount) {
         if (desertCount < 0) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
+        if (isWeekend(visitDate)) {
+            return 0;
+        }
         return WEEKDAY_DISCOUNT_AMOUNT * desertCount;
+    }
+
+    private boolean isWeekend(LocalDate visitDate) {
+        DayOfWeek dayOfWeek = visitDate.getDayOfWeek();
+        return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
     }
 }

@@ -1,2 +1,4 @@
-package christmas.domain;public class DiscountCasher {
+package christmas.domain;
+
+public class DiscountCasher {
 }
