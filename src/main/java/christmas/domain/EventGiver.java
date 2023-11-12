@@ -5,10 +5,7 @@ import christmas.validator.DomainValidator;
 public class EventGiver {
     private static final int STANDARD_PURCHASE_AMOUNT_FOR_EVENT = 120_000;
 
-    private final int totalPurchaseAmount;
-
-    public EventGiver(int totalPurchaseAmount) {
-        this.totalPurchaseAmount = totalPurchaseAmount;
+    public EventGiver() {
     }
 
     public Menu awardBonusMerchandise(int totalPurchaseAmount) {
@@ -18,7 +15,7 @@ public class EventGiver {
         return Menu.CHAMPAGNE;
     }
 
-    public Badge awardBadge(int totalDiscountAmount) {
+    public Badge awardBadge(int totalPurchaseAmount, int totalDiscountAmount) {
         if (DomainValidator.isTotalPurchaseAmountBelowThreshold(totalPurchaseAmount)) {
             return null;
         }
