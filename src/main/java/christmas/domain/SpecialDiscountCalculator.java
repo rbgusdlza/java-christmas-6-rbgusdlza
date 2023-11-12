@@ -12,12 +12,18 @@ public class SpecialDiscountCalculator {
     }
 
     public int calculateSpecialDiscount(int day) {
-        if (day <= 0 || day > 31) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
-        }
+        isValidDay(day);
         if (DecemberStarDays.contains(day)) {
             return SPECIAL_DISCOUNT_AMOUNT;
         }
         return 0;
+    }
+
+    private void isValidDay(int day) {
+        int FIRST_DAY_OF_DECEMBER = 1;
+        int LAST_DAY_OF_DECEMBER = 31;
+        if (day < FIRST_DAY_OF_DECEMBER || day > LAST_DAY_OF_DECEMBER) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+        }
     }
 }
