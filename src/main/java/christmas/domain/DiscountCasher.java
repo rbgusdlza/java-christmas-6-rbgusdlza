@@ -1,19 +1,21 @@
 package christmas.domain;
 
-import java.util.Arrays;
 import java.util.HashMap;
-import java.util.List;
 import java.util.Map;
 
 public class DiscountCasher {
     private Map<Menu, Integer> orderDetails = new HashMap<>();
+    private int totalPurchaseAmount;
 
-    public void makeOrderDetails(String inputOrders) {
-        String[] inputOrder = inputOrders.split(",");
-        for (String item : inputOrder) {
-            String[] subItems = item.split("-");
-            
+    DiscountCasher(Map<Menu, Integer> orderDetails) {
+        this.orderDetails = orderDetails;
+    }
+
+    private int calculatePurchaseAmount() {
+        for (Map.Entry<Menu, Integer> entry : orderDetails.entrySet()) {
+            Menu menu = entry.getKey();
+            Integer menuCount = entry.getValue();
+            totalPurchaseAmount += menu
         }
-
     }
 }

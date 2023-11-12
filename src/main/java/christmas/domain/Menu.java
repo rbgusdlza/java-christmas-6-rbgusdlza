@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import christmas.exception.ErrorMessage;
+
 public enum Menu {
     MUSHROOM_SOUP("appetizer", 6_000, "양송이수프"),
     TAPAS("appetizer", 5_500, "타파스"),
@@ -22,5 +24,26 @@ public enum Menu {
         this.course = course;
         this.price = price;
         this.name = name;
+    }
+
+    public Menu getMenu(String name) {
+        for (Menu menu : values()) {
+            if (menu.name.equals(name)) {
+                return menu;
+            }
+        }
+        throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+    }
+
+    public String getCourse(Menu menu) {
+        return menu.course;
+    }
+
+    public int getPrice(Menu menu) {
+        return menu.price;
+    }
+
+    public String getName(Menu menu) {
+        return menu.name;
     }
 }
