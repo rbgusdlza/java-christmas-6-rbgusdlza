@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class Casher {
+    private final static int STANDARD_PURCHASE_AMOUNT = 10_000;
     private Map<Menu, Integer> orderDetails = new HashMap<>();
     private final int totalPurchaseAmount;
     private int totalDiscountAmount;
@@ -24,8 +25,11 @@ public class Casher {
         return totalPurchaseAmount;
     }
 
-    public int getTotalPurchaseAmount() {
-        return totalPurchaseAmount;
+    public boolean isDiscountPossible() {
+        if (totalDiscountAmount >= STANDARD_PURCHASE_AMOUNT) {
+            return true;
+        }
+        return false;
     }
 
     public int getTotalDiscountAmount() {

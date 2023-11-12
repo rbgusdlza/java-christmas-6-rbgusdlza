@@ -16,12 +16,12 @@ public enum Menu {
     RED_WINE("beverage", 60_000, "레드와인"),
     CHAMPAGNE("beverage", 25_000, "샴페인");
 
-    private final String course;
+    private final String type;
     private final int price;
     private final String name;
 
-    private Menu(String course, int price, String name) {
-        this.course = course;
+    private Menu(String type, int price, String name) {
+        this.type = type;
         this.price = price;
         this.name = name;
     }
@@ -35,8 +35,8 @@ public enum Menu {
         throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
     }
 
-    public String getCourse() {
-        return course;
+    public String getType() {
+        return type;
     }
 
     public int getPrice() {
