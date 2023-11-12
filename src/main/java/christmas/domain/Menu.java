@@ -35,15 +35,15 @@ public enum Menu {
         throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
     }
 
-    public String getCourse(Menu menu) {
-        return menu.course;
+    public String getCourse() {
+        return course;
     }
 
-    public int getPrice(Menu menu) {
-        return menu.price;
+    public int getPrice() {
+        return price;
     }
 
-    public String getName(Menu menu) {
-        return menu.name;
+    public String getName() {
+        return name;
     }
 }
