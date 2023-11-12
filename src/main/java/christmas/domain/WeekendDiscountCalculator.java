@@ -1,8 +1,7 @@
 package christmas.domain;
 
 import christmas.exception.ErrorMessage;
-import christmas.util.WeekendChecker;
-import java.time.LocalDate;
+import christmas.validator.WeekendChecker;
 
 public class WeekendDiscountCalculator {
     private final int WEEKEND_DISCOUNT_AMOUNT = 2_023;

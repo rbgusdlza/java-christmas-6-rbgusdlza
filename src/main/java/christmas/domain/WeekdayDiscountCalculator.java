@@ -1,7 +1,7 @@
 package christmas.domain;
 
 import christmas.exception.ErrorMessage;
-import christmas.util.WeekendChecker;
+import christmas.validator.WeekendChecker;
 
 public class WeekdayDiscountCalculator {
     private final int WEEKDAY_DISCOUNT_AMOUNT = 2_023;
