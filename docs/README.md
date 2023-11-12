@@ -45,7 +45,7 @@
     - [예외] 25일 이후부터는 적용이 불가능하다.
     - [x] 디저트 메뉴에 평일 할인을 적용한다. - WeekdayDiscountCalculator#calculateWeekdayDiscount()
     - [예외] 일요일~목요일에만 적용된다.
-    - [ ] 메인 메뉴에 주말 할인을 적용한다.
+    - [x] 메인 메뉴에 주말 할인을 적용한다. - WeekendDiscountCalculator#calculateWeekendDiscount()
     - [예외] 금요일, 토요일에만 적용된다.
     - [x] 총주문 금액에 특별 할인을 적용한다. - SpecialDiscountCalculator#calculateSpecialDiscount()
     - [예외] 이벤트 달력에 별이 있으면 적용된다.
