@@ -11,18 +11,18 @@ public class SpecialDiscountCalculator {
     public SpecialDiscountCalculator() {
     }
 
-    public int calculateSpecialDiscount(int day) {
-        isValidDay(day);
-        if (DecemberStarDays.contains(day)) {
+    public int calculateSpecialDiscount(int visitDay) {
+        isValidDay(visitDay);
+        if (DecemberStarDays.contains(visitDay)) {
             return SPECIAL_DISCOUNT_AMOUNT;
         }
         return 0;
     }
 
-    private void isValidDay(int day) {
+    private void isValidDay(int visitDay) {
         int FIRST_DAY_OF_DECEMBER = 1;
         int LAST_DAY_OF_DECEMBER = 31;
-        if (day < FIRST_DAY_OF_DECEMBER || day > LAST_DAY_OF_DECEMBER) {
+        if (visitDay < FIRST_DAY_OF_DECEMBER || visitDay > LAST_DAY_OF_DECEMBER) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
         }
     }

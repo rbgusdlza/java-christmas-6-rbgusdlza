@@ -1,7 +1,7 @@
 package christmas.domain;
 
 import christmas.exception.ErrorMessage;
-import java.time.DayOfWeek;
+import christmas.util.WeekendChecker;
 import java.time.LocalDate;
 
 public class WeekendDiscountCalculator {
@@ -10,18 +10,17 @@ public class WeekendDiscountCalculator {
     public WeekendDiscountCalculator() {
     }
 
-    public int calculateWeekendDiscount(LocalDate visitDate, int mainCount) {
-        if (mainCount < 0) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
-        }
-        if (!isWeekend(visitDate)) {
+    public int calculateWeekendDiscount(int visitDay, int mainCount) {
+        isValidCount(mainCount);
+        if (!WeekendChecker.isWeekend(visitDay)) {
             return 0;
         }
         return WEEKEND_DISCOUNT_AMOUNT * mainCount;
     }
 
-    private boolean isWeekend(LocalDate visitDate) {
-        DayOfWeek dayOfWeek = visitDate.getDayOfWeek();
-        return dayOfWeek == DayOfWeek.FRIDAY || dayOfWeek == DayOfWeek.SATURDAY;
+    private void isValidCount(int mainCount) {
+        if (mainCount < 0) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+        }
     }
 }
