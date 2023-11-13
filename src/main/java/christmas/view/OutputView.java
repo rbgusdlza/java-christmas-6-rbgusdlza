@@ -9,6 +9,7 @@ import static christmas.constant.MessageCatalog.ORDER_MENU_MESSAGE;
 import static christmas.constant.MessageCatalog.TOTAL_DISCOUNT_AMOUNT_MESSAGE;
 import static christmas.constant.MessageCatalog.TOTAL_PURCHASE_AMOUNT_MESSAGE;
 import static christmas.constant.MessageCatalog.BENEFIT_ANNOUNCEMENT;
+import static christmas.util.ThousandSeparator.addThousandsSeparator;
 
 import christmas.domain.Menu;
 import christmas.domain.OrderManager;
@@ -62,5 +63,9 @@ public class OutputView {
             Integer menuCount = orderEntry.getValue();
             System.out.println(menu + " " + menuCount + "개");
         }
+    }
+
+    public void printMoney(int money) {
+        System.out.println(addThousandsSeparator(money));
     }
 }

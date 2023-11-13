@@ -1,6 +1,7 @@
 package christmas.controller;
 
 import christmas.domain.DiscountCasher;
+import christmas.domain.EventGiver;
 import christmas.domain.OrderManager;
 import java.util.Map;
 import christmas.domain.Menu;
@@ -42,6 +43,8 @@ public class XmasEventController {
 
     public void printTotalPurchaseAmount() {
         outputView.printTotalPurchaseAmount();
-
+        EventGiver eventGiver = new EventGiver();
+        int totalPurchaseAmount = eventGiver.awardBonusMerchandise(orderManager.calculatePurchaseAmount());
+        outputView.printMoney(totalPurchaseAmount);
     }
 }
