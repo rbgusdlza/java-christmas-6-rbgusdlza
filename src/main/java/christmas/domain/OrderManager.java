@@ -2,6 +2,7 @@ package christmas.domain;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Objects;
 
 public class OrderManager {
     private Map<Menu, Integer> orderDetails;
@@ -21,4 +22,17 @@ public class OrderManager {
         return totalPurchaseAmount;
     }
 
+    public int countFoodTypes(Map<Menu, Integer> orderDetails, String typeName) {
+        int typeCount = 0;
+        for (Map.Entry<Menu, Integer> orderEntry : orderDetails.entrySet()) {
+            Menu menu = orderEntry.getKey();
+            Integer menuCount = orderEntry.getValue();
+            if (Objects.equals(menu.getType(), typeName)) {
+                typeCount += menuCount;
+            }
+        }
+        return typeCount;
+    }
+
+    
 }
