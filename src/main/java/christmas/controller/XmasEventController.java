@@ -41,6 +41,7 @@ public class XmasEventController {
     }
 
     public void printTotalPurchaseAmount() {
-        
+        outputView.printTotalPurchaseAmount();
+
     }
 }
