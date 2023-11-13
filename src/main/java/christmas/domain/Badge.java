@@ -9,22 +9,22 @@ public class Badge {
     private static final String THIRD_THRESHOLD_MERCHANDISE = "산타";
     private static final String NO_MERCHANDISE = "없음";
 
-    private final int discount_amount;
-    private final String event_merchandise;
+    private final int discountAmount;
+    private final String eventMerchandise;
 
-    public Badge(int discount_amount) {
-        this.discount_amount = discount_amount;
-        event_merchandise = setEventMerchandise();
+    public Badge(int discountAmount) {
+        this.discountAmount = discountAmount;
+        eventMerchandise = setEventMerchandise();
     }
 
     private String setEventMerchandise() {
-        if (discount_amount >= THIRD_AMOUNT_THRESHOLD) {
+        if (discountAmount >= THIRD_AMOUNT_THRESHOLD) {
             return THIRD_THRESHOLD_MERCHANDISE;
         }
-        if (discount_amount >= SECOND_AMOUNT_THRESHOLD) {
+        if (discountAmount >= SECOND_AMOUNT_THRESHOLD) {
             return SECOND_THRESHOLD_MERCHANDISE;
         }
-        if (discount_amount >= FIRST_AMOUNT_THRESHOLD) {
+        if (discountAmount >= FIRST_AMOUNT_THRESHOLD) {
             return FIRST_THRESHOLD_MERCHANDISE;
         }
         return NO_MERCHANDISE;
@@ -32,6 +32,6 @@ public class Badge {
 
     @Override
     public String toString() {
-        return event_merchandise;
+        return eventMerchandise;
     }
 }

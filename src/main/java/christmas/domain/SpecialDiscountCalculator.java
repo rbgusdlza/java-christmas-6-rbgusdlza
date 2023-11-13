@@ -2,7 +2,6 @@ package christmas.domain;
 
 import static christmas.validator.InputValidator.isDayPossible;
 
-import christmas.constant.ErrorMessage;
 import java.util.ArrayList;
 import java.util.List;
 

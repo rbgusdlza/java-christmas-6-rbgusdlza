@@ -17,16 +17,13 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InputView {
-    private int visitDay;
-    private Map<Menu, Integer> orderDetails;
 
     public int readVisitDay() {
         try {
             System.out.printf(REQUEST_VISIT_DAY + LINE_DIVIDER, EVENT_MONTH);
             String input = Console.readLine();
             isVisitDayValid(input);
-            visitDay = Integer.parseInt(input);
-            return visitDay;
+            return Integer.parseInt(input);
         } catch (Exception error) {
             System.out.println(error.getMessage());
             return readVisitDay();
@@ -37,8 +34,7 @@ public class InputView {
         try {
             System.out.println(REQUEST_ORDER);
             String input = Console.readLine();
-            orderDetails = processOrderInput(input);
-            return orderDetails;
+            return processOrderInput(input);
         } catch (Exception error) {
             System.out.println(error.getMessage());
             return readOrderDetails();

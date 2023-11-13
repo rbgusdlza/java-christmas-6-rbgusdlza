@@ -2,8 +2,6 @@ package christmas.domain;
 
 import static christmas.validator.InputValidator.isDayPossible;
 
-import christmas.constant.ErrorMessage;
-
 public class XmasDiscountCalculator {
     private final int STANDARD_DISCOUNT_AMOUNT = 1_000;
     private final int XMAS_DAY = 25;

@@ -8,6 +8,11 @@ import static christmas.constant.MessageCatalog.GREETING;
 import static christmas.constant.MessageCatalog.ORDER_MENU_MESSAGE;
 import static christmas.constant.MessageCatalog.TOTAL_DISCOUNT_AMOUNT_MESSAGE;
 import static christmas.constant.MessageCatalog.TOTAL_PURCHASE_AMOUNT_MESSAGE;
+import static christmas.constant.MessageCatalog.BENEFIT_ANNOUNCEMENT;
+
+import christmas.domain.Menu;
+import christmas.domain.OrderManager;
+import java.util.Map;
 
 public class OutputView {
     private final int EVENT_MONTH = 12;
@@ -16,6 +21,11 @@ public class OutputView {
 
     public void printGreeting() {
         System.out.printf(GREETING + LINE_DIVIDER, EVENT_MONTH);
+    }
+
+    public void printPreview(int visitDay) {
+        System.out.printf(BENEFIT_ANNOUNCEMENT + LINE_DIVIDER, EVENT_MONTH, visitDay);
+        System.out.println();
     }
 
     public void printMenu() {
@@ -46,7 +56,11 @@ public class OutputView {
         System.out.printf(EVENT_BADGE_MESSAGE + LINE_DIVIDER, EVENT_MONTH);
     }
 
-    public void printMessage(String message) {
-        System.out.println(message);
+    public void printOrderDetails(Map<Menu, Integer> orderDetails) {
+        for (Map.Entry<Menu, Integer> orderEntry : orderDetails.entrySet()) {
+            Menu menu = orderEntry.getKey();
+            Integer menuCount = orderEntry.getValue();
+            System.out.println(menu + " " + menuCount + "개");
+        }
     }
 }

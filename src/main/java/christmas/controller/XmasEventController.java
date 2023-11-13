@@ -1,15 +1,19 @@
 package christmas.controller;
 
-import christmas.domain.Menu;
+import christmas.domain.DiscountCasher;
 import christmas.domain.OrderManager;
+import java.util.Map;
+import christmas.domain.Menu;
 import christmas.view.InputView;
 import christmas.view.OutputView;
-import java.util.Map;
-import java.util.Map.Entry;
 
 public class XmasEventController {
     private final InputView inputView;
     private final OutputView outputView;
+    private final DiscountCasher discountCasher = new DiscountCasher();
+    private OrderManager orderManager;
+    private int visitDay;
+    private Map<Menu, Integer> orderDetails;
 
     public XmasEventController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -17,14 +21,26 @@ public class XmasEventController {
     }
 
     public void start() {
-        getUserData();
+        getDateAndOrder();
+        printOrderDetails();
+        printTotalPurchaseAmount();
     }
 
-    public void getUserData() {
+    public void getDateAndOrder() {
         outputView.printGreeting();
-        inputView.readVisitDay();
-        inputView.readOrderDetails();
+        visitDay = inputView.readVisitDay();
+        orderDetails = inputView.readOrderDetails();
+        orderManager = new OrderManager(orderDetails);
+        outputView.printPreview(visitDay);
     }
 
-    
+    public void printOrderDetails() {
+        outputView.printMenu();
+        outputView.printOrderDetails(orderDetails);
+        System.out.println();
+    }
+
+    public void printTotalPurchaseAmount() {
+        
+    }
 }

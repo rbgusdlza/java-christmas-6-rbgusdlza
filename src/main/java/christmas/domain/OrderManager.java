@@ -5,13 +5,13 @@ import java.util.Map;
 import java.util.Objects;
 
 public class OrderManager {
-    private Map<Menu, Integer> orderDetails;
+    private final Map<Menu, Integer> orderDetails;
 
     public OrderManager(Map<Menu, Integer> orderDetails) {
         this.orderDetails = orderDetails;
     }
 
-    public int calculatePurchaseAmount(Map<Menu, Integer> orderDetails) {
+    public int calculatePurchaseAmount() {
         int totalPurchaseAmount = 0;
         for (Map.Entry<Menu, Integer> orderEntry : orderDetails.entrySet()) {
             Menu menu = orderEntry.getKey();
@@ -22,7 +22,7 @@ public class OrderManager {
         return totalPurchaseAmount;
     }
 
-    public int countFoodTypes(Map<Menu, Integer> orderDetails, String typeName) {
+    public int countFoodTypes(String typeName) {
         int typeCount = 0;
         for (Map.Entry<Menu, Integer> orderEntry : orderDetails.entrySet()) {
             Menu menu = orderEntry.getKey();

@@ -4,9 +4,8 @@ public class DiscountCasher {
     private final static int STANDARD_PURCHASE_AMOUNT = 10_000;
     private int totalDiscountAmount;
 
-
-    public boolean isDiscountPossible() {
-        if (totalDiscountAmount >= STANDARD_PURCHASE_AMOUNT) {
+    public boolean isDiscountPossible(int totalPurchaseAmount) {
+        if (totalPurchaseAmount >= STANDARD_PURCHASE_AMOUNT) {
             return true;
         }
         return false;
@@ -16,7 +15,7 @@ public class DiscountCasher {
         return totalDiscountAmount;
     }
 
-    private void addDiscountAmount(int discountAmount) {
+    public void addDiscountAmount(int discountAmount) {
         totalDiscountAmount += discountAmount;
     }
 }
