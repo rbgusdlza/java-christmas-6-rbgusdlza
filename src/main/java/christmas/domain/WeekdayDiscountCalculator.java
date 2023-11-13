@@ -6,8 +6,6 @@ import christmas.validator.WeekendChecker;
 public class WeekdayDiscountCalculator {
     private final int WEEKDAY_DISCOUNT_AMOUNT = 2_023;
 
-    public WeekdayDiscountCalculator() {
-    }
 
     public int calculateWeekdayDiscount(int visitDay, int desertCount) {
         isValidCount(desertCount);

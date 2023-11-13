@@ -6,7 +6,6 @@ import static christmas.constant.MessageCatalog.EVENT_BADGE_MESSAGE;
 import static christmas.constant.MessageCatalog.FREE_MENU_MESSAGE;
 import static christmas.constant.MessageCatalog.GREETING;
 import static christmas.constant.MessageCatalog.ORDER_MENU_MESSAGE;
-import static christmas.constant.MessageCatalog.REQUEST_VISIT_DAY;
 import static christmas.constant.MessageCatalog.TOTAL_DISCOUNT_AMOUNT_MESSAGE;
 import static christmas.constant.MessageCatalog.TOTAL_PURCHASE_AMOUNT_MESSAGE;
 
@@ -14,12 +13,9 @@ public class OutputView {
     private final int EVENT_MONTH = 12;
     private final String LINE_DIVIDER = "\n";
 
-    public OutputView() {
-    }
 
     public void printGreeting() {
         System.out.printf(GREETING + LINE_DIVIDER, EVENT_MONTH);
-        System.out.printf(REQUEST_VISIT_DAY + LINE_DIVIDER, EVENT_MONTH);
     }
 
     public void printMenu() {
@@ -48,5 +44,9 @@ public class OutputView {
 
     public void printBadge() {
         System.out.printf(EVENT_BADGE_MESSAGE + LINE_DIVIDER, EVENT_MONTH);
+    }
+
+    public void printMessage(String message) {
+        System.out.println(message);
     }
 }

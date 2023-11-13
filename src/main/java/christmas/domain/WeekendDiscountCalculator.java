@@ -1,15 +1,16 @@
 package christmas.domain;
 
+import static christmas.validator.InputValidator.isPossibleDay;
+
 import christmas.constant.ErrorMessage;
 import christmas.validator.WeekendChecker;
 
 public class WeekendDiscountCalculator {
     private final int WEEKEND_DISCOUNT_AMOUNT = 2_023;
 
-    public WeekendDiscountCalculator() {
-    }
 
     public int calculateWeekendDiscount(int visitDay, int mainCount) {
+        isPossibleDay(visitDay);
         isValidCount(mainCount);
         if (!WeekendChecker.isWeekend(visitDay)) {
             return 0;
