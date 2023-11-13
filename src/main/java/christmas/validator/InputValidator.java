@@ -69,14 +69,6 @@ public class InputValidator {
     public static void isMenuCountValid(String menuCount) {
         isInputEmpty(menuCount);
         isNumeric(menuCount);
-        int menuCountNumber = Integer.parseInt(menuCount);
-        isCountPossible(menuCountNumber);
-    }
-
-    public static void isCountPossible(int menuCount) {
-        if (menuCount > STANDARD_MENU_COUNT) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
-        }
     }
 
     public static void isMenuDuplicate(Map<Menu, Integer> orderDetails, Menu menu) {
@@ -87,14 +79,32 @@ public class InputValidator {
 
     public static void checkTypicalMenuOnly(Map<Menu, Integer> orderDetails) {
         boolean hasOtherMenu = false;
-        for (Map.Entry<Menu, Integer> OrderEntry : orderDetails.entrySet()) {
-            Menu menu = OrderEntry.getKey();
+        for (Map.Entry<Menu, Integer> orderEntry : orderDetails.entrySet()) {
+            Menu menu = orderEntry.getKey();
             if (!Objects.equals(menu.getType(), MENU_TYPE)) {
                 hasOtherMenu = true;
                 break;
             }
         }
         if (!hasOtherMenu) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
+        }
+    }
+
+    public static void isInputFormatValid(String input) {
+        int inputLength = input.length();
+        if (input.charAt(0) == ',' || input.charAt(inputLength - 1) == ',') {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
+        }
+    }
+
+    public static void isExceedingOrderQuantity(Map<Menu, Integer> orderDetails) {
+        int totalCount = 0;
+        for (Map.Entry<Menu, Integer> orderEntry : orderDetails.entrySet()) {
+            Integer menuCount = orderEntry.getValue();
+            totalCount += menuCount;
+        }
+        if (totalCount > STANDARD_MENU_COUNT) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
         }
     }
