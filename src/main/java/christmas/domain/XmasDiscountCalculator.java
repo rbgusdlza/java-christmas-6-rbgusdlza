@@ -1,6 +1,6 @@
 package christmas.domain;
 
-import static christmas.validator.InputValidator.isPossibleDay;
+import static christmas.validator.InputValidator.isDayPossible;
 
 import christmas.constant.ErrorMessage;
 
@@ -10,7 +10,7 @@ public class XmasDiscountCalculator {
 
 
     public int calculateXmasDiscount(int visitDay) {
-        isPossibleDay(visitDay);
+        isDayPossible(visitDay);
         if (visitDay > XMAS_DAY) {
             return 0;
         }

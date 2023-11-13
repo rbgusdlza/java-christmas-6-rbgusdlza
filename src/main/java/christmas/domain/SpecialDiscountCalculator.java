@@ -1,5 +1,7 @@
 package christmas.domain;
 
+import static christmas.validator.InputValidator.isDayPossible;
+
 import christmas.constant.ErrorMessage;
 import java.util.ArrayList;
 import java.util.List;
@@ -10,18 +12,10 @@ public class SpecialDiscountCalculator {
 
 
     public int calculateSpecialDiscount(int visitDay) {
-        isValidDay(visitDay);
+        isDayPossible(visitDay);
         if (DecemberStarDays.contains(visitDay)) {
             return SPECIAL_DISCOUNT_AMOUNT;
         }
         return 0;
-    }
-
-    private void isValidDay(int visitDay) {
-        int FIRST_DAY_OF_DECEMBER = 1;
-        int LAST_DAY_OF_DECEMBER = 31;
-        if (visitDay < FIRST_DAY_OF_DECEMBER || visitDay > LAST_DAY_OF_DECEMBER) {
-            throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
-        }
     }
 }

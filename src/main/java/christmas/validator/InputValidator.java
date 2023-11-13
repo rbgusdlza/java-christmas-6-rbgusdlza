@@ -1,8 +1,17 @@
 package christmas.validator;
 
 import christmas.constant.ErrorMessage;
+import christmas.domain.Menu;
+import java.util.Map;
+import java.util.Objects;
 
 public class InputValidator {
+    private static int FIRST_DAY_OF_DECEMBER = 1;
+    private static int LAST_DAY_OF_DECEMBER = 31;
+    private static int MENU_INFO_LENGTH = 2;
+    private static int STANDARD_MENU_COUNT = 20;
+    private static String MENU_TYPE = "beverage";
+
     private InputValidator() {
     }
 
@@ -10,7 +19,7 @@ public class InputValidator {
         isInputEmpty(input);
         isNumeric(input);
         int visitDay = Integer.parseInt(input);
-        isPossibleDay(visitDay);
+        isDayPossible(visitDay);
     }
 
     public static void isInputEmpty(String input) {
@@ -30,11 +39,63 @@ public class InputValidator {
         }
     }
 
-    public static void isPossibleDay(int visitDay) {
-        int FIRST_DAY_OF_DECEMBER = 1;
-        int LAST_DAY_OF_DECEMBER = 31;
+    public static void isDayPossible(int visitDay) {
         if (visitDay < FIRST_DAY_OF_DECEMBER || visitDay > LAST_DAY_OF_DECEMBER) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_VISIT_DAY_INPUT.getMessage());
+        }
+    }
+
+    public static void isOrderDetailsValid(String[] subItems) {
+        isMenuInfoLengthValid(subItems);
+        String menuName = subItems[0];
+        String menuCount = subItems[1];
+        isMenuNameValid(menuName);
+        isMenuCountValid(menuCount);
+    }
+
+    public static void isMenuInfoLengthValid(String[] subItems) {
+        if (subItems.length != MENU_INFO_LENGTH) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
+        }
+    }
+
+    public static void isMenuNameValid(String menuName) {
+        isInputEmpty(menuName);
+        if (Menu.getMenu(menuName) == null) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
+        }
+    }
+
+    public static void isMenuCountValid(String menuCount) {
+        isInputEmpty(menuCount);
+        isNumeric(menuCount);
+        int menuCountNumber = Integer.parseInt(menuCount);
+        isCountPossible(menuCountNumber);
+    }
+
+    public static void isCountPossible(int menuCount) {
+        if (menuCount > STANDARD_MENU_COUNT) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
+        }
+    }
+
+    public static void isMenuDuplicate(Map<Menu, Integer> orderDetails, Menu menu) {
+        if (orderDetails.containsKey(menu)) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
+        }
+    }
+
+    public static void checkTypicalMenuOnly(Map<Menu, Integer> orderDetails) {
+        boolean hasOtherMenu = false;
+        for (Map.Entry<Menu, Integer> OrderEntry : orderDetails.entrySet()) {
+            Menu menu = OrderEntry.getKey();
+            if (!Objects.equals(menu.getType(), MENU_TYPE)) {
+                hasOtherMenu = true;
+                break;
+            }
+        }
+        if (!hasOtherMenu) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
         }
     }
 }

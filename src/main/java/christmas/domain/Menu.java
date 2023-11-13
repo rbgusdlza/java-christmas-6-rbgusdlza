@@ -1,7 +1,5 @@
 package christmas.domain;
 
-import christmas.constant.ErrorMessage;
-
 public enum Menu {
     MUSHROOM_SOUP("appetizer", 6_000, "양송이수프"),
     TAPAS("appetizer", 5_500, "타파스"),
@@ -26,13 +24,13 @@ public enum Menu {
         this.name = name;
     }
 
-    public Menu getMenu(String name) {
+    public static Menu getMenu(String name) {
         for (Menu menu : values()) {
             if (menu.name.equals(name)) {
                 return menu;
             }
         }
-        throw new IllegalArgumentException(ErrorMessage.INVALID_INPUT.getMessage());
+        return null;
     }
 
     public String getType() {
