@@ -33,6 +33,4 @@ public class OrderManager {
         }
         return typeCount;
     }
-
-    
 }
