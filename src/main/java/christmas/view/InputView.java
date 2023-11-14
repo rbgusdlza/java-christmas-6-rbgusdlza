@@ -3,11 +3,11 @@ package christmas.view;
 import static christmas.constant.MessageCatalog.REQUEST_ORDER;
 import static christmas.constant.MessageCatalog.REQUEST_VISIT_DAY;
 import static christmas.constant.MessageCatalog.EVENT_MONTH;
-import static christmas.validator.InputValidator.checkTypicalMenuOnly;
-import static christmas.validator.InputValidator.isExceedingOrderQuantity;
+import static christmas.validator.MenuValidator.checkTypicalMenuOnly;
+import static christmas.validator.MenuValidator.isExceedingOrderQuantity;
 import static christmas.validator.InputValidator.isInputFormatValid;
-import static christmas.validator.InputValidator.isMenuDuplicate;
-import static christmas.validator.InputValidator.isOrderDetailsValid;
+import static christmas.validator.MenuValidator.isMenuDuplicate;
+import static christmas.validator.MenuValidator.isOrderDetailsValid;
 import static christmas.validator.InputValidator.isVisitDayValid;
 
 import camp.nextstep.edu.missionutils.Console;
