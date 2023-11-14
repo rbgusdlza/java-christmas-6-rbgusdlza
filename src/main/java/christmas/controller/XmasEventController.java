@@ -24,6 +24,7 @@ public class XmasEventController {
         printTotalPurchaseAmount();
         printEachDiscountAmount();
         printTotalDiscountAmount();
+        printEstimatePurchaseAmount();
     }
 
     public void getDateAndOrder() {
@@ -66,5 +67,9 @@ public class XmasEventController {
         outputView.divideLine();
     }
 
-
+    public void printEstimatePurchaseAmount() {
+        outputView.printPaymentNotice();
+        outputView.printMoney(discountCasher.calculateEstimatePurchaseAmount(orderManager));
+        outputView.divideLine();
+    }
 }
