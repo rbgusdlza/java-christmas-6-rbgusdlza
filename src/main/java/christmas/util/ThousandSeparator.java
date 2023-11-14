@@ -2,6 +2,7 @@ package christmas.util;
 
 public class ThousandSeparator {
     private static final String MINUS = "-";
+    private static final String THOUSAND_SEPARATOR = ",";
     private static final String CURRENCY = "원";
 
     private ThousandSeparator() {
@@ -15,10 +16,10 @@ public class ThousandSeparator {
             formattedNumbers.insert(0, numbers.charAt(i));
             count++;
             if (count % 3 == 0 && i > 0) {
-                formattedNumbers.insert(0, ",");
+                formattedNumbers.insert(0, THOUSAND_SEPARATOR);
             }
         }
-        return formattedNumbers.toString() + CURRENCY;
+        return formattedNumbers + CURRENCY;
     }
 
     public static String addThousandsSeparatorWithMinus(int money) {

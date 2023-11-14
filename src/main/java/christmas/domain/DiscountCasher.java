@@ -3,7 +3,6 @@ package christmas.domain;
 import java.util.Map;
 
 public class DiscountCasher {
-    private static final int STANDARD_PURCHASE_AMOUNT = 10_000;
     private final int totalPurchaseAmount;
     private final int visitDay;
     private final XmasDiscountCalculator xmasDiscountCalculator;
@@ -21,6 +20,7 @@ public class DiscountCasher {
     }
 
     public boolean isDiscountImpossible() {
+        int STANDARD_PURCHASE_AMOUNT = 10_000;
         if (totalPurchaseAmount >= STANDARD_PURCHASE_AMOUNT) {
             return false;
         }
