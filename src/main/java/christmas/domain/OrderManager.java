@@ -32,4 +32,8 @@ public class OrderManager {
         }
         return typeCount;
     }
+
+    public Map<Menu, Integer> getOrderDetails() {
+        return orderDetails;
+    }
 }

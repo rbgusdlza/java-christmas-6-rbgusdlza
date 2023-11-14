@@ -4,8 +4,10 @@ import static christmas.constant.MessageCatalog.BENEFIT_SUMMARY_MESSAGE;
 import static christmas.constant.MessageCatalog.ESTIMATED_PAYMENT_AMOUNT_MESSAGE;
 import static christmas.constant.MessageCatalog.EVENT_BADGE_MESSAGE;
 import static christmas.constant.MessageCatalog.EVENT_BENEFIT_MESSAGE;
+import static christmas.constant.MessageCatalog.EVENT_MONTH;
 import static christmas.constant.MessageCatalog.FREE_MENU_MESSAGE;
 import static christmas.constant.MessageCatalog.GREETING;
+import static christmas.constant.MessageCatalog.NO_INPUT;
 import static christmas.constant.MessageCatalog.ORDER_MENU_MESSAGE;
 import static christmas.constant.MessageCatalog.SPECIAL_BENEFIT_MESSAGE;
 import static christmas.constant.MessageCatalog.TOTAL_DISCOUNT_AMOUNT_MESSAGE;
@@ -14,6 +16,7 @@ import static christmas.constant.MessageCatalog.BENEFIT_ANNOUNCEMENT;
 import static christmas.constant.MessageCatalog.WEEKDAY_BENEFIT_MESSAGE;
 import static christmas.constant.MessageCatalog.WEEKEND_BENEFIT_MESSAGE;
 import static christmas.constant.MessageCatalog.XMAS_BENEFIT_MESSAGE;
+import static christmas.constant.MessageCatalog.LINE_DIVIDER;
 import static christmas.util.ThousandSeparator.addThousandsSeparator;
 import static christmas.util.ThousandSeparator.addThousandsSeparatorWithMinus;
 
@@ -22,9 +25,7 @@ import christmas.validator.WeekendChecker;
 import java.util.Map;
 
 public class OutputView {
-    private final int EVENT_MONTH = 12;
-    private final String LINE_DIVIDER = "\n";
-    private final String NO_INPUT = "없음";
+    private boolean checkDiscountAllZero = true;
 
 
     public void printGreeting() {
@@ -88,41 +89,39 @@ public class OutputView {
         System.out.println(addThousandsSeparatorWithMinus(discountAmount));
     }
 
-    
-    public void printXmasDiscount(int discountAmount) {
-        if (discountAmount == 0) {
-            return;
+    private void printBenefit(String message, int discountAmount) {
+        if (discountAmount != 0) {
+            checkDiscountAllZero = false;
+            System.out.print(message);
+            printDiscount(discountAmount);
         }
-        System.out.print(XMAS_BENEFIT_MESSAGE);
-        printDiscount(discountAmount);
+    }
+
+    public void printDiscountEmpty() {
+        if (checkDiscountAllZero) {
+            System.out.println(NO_INPUT);
+        }
+    }
+
+
+    public void printXmasDiscount(int discountAmount) {
+        printBenefit(XMAS_BENEFIT_MESSAGE, discountAmount);
     }
 
     public void printWeekDiscount(int visitDay, int discountAmount) {
-        if (discountAmount == 0) {
-            return;
-        }
         if (WeekendChecker.isWeekend(visitDay)) {
-            System.out.print(WEEKEND_BENEFIT_MESSAGE);
-            printDiscount(discountAmount);
-            return;
+            printBenefit(WEEKEND_BENEFIT_MESSAGE, discountAmount);
         }
-        System.out.print(WEEKDAY_BENEFIT_MESSAGE);
-        printDiscount(discountAmount);
+        if (!WeekendChecker.isWeekend(visitDay)) {
+            printBenefit(WEEKDAY_BENEFIT_MESSAGE, discountAmount);
+        }
     }
 
     public void printSpecialDiscount(int discountAmount) {
-        if (discountAmount == 0) {
-            return;
-        }
-        System.out.print(SPECIAL_BENEFIT_MESSAGE);
-        printDiscount(discountAmount);
+        printBenefit(SPECIAL_BENEFIT_MESSAGE, discountAmount);
     }
 
     public void printEventDiscount(int discountAmount) {
-        if (discountAmount == 0) {
-            return;
-        }
-        System.out.print(EVENT_BENEFIT_MESSAGE);
-        printDiscount(discountAmount);
+        printBenefit(EVENT_BENEFIT_MESSAGE, discountAmount);
     }
 }

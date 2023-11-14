@@ -12,8 +12,6 @@ public class XmasEventController {
     private final OutputView outputView;
     private DiscountCasher discountCasher;
     private OrderManager orderManager;
-    private Map<Menu, Integer> orderDetails;
-    private int visitDay;
 
     public XmasEventController(InputView inputView, OutputView outputView) {
         this.inputView = inputView;
@@ -29,16 +27,15 @@ public class XmasEventController {
 
     public void getDateAndOrder() {
         outputView.printGreeting();
-        visitDay = inputView.readVisitDay();
-        orderDetails = inputView.readOrderDetails();
-        orderManager = new OrderManager(orderDetails);
+        int visitDay = inputView.readVisitDay();
+        orderManager = new OrderManager(inputView.readOrderDetails());
         discountCasher = new DiscountCasher(visitDay, orderManager.calculatePurchaseAmount());
         outputView.printPreview(visitDay);
     }
 
     public void printOrderDetails() {
         outputView.printMenu();
-        outputView.printOrderDetails(orderDetails);
+        outputView.printOrderDetails(orderManager.getOrderDetails());
         outputView.divideLine();
     }
 
@@ -55,9 +52,9 @@ public class XmasEventController {
     public void printTotalDiscountAmount() {
         outputView.printBenefit();
         outputView.printXmasDiscount(discountCasher.calculateXmasDiscount());
-        outputView.printWeekDiscount(visitDay, discountCasher.calculateWeekDiscount(orderManager));
+        outputView.printWeekDiscount(discountCasher.getVisitDay(), discountCasher.calculateWeekDiscount(orderManager));
         outputView.printSpecialDiscount(discountCasher.calculateSpecialDiscount());
         outputView.printEventDiscount(discountCasher.calculateEventDiscount());
+        outputView.printDiscountEmpty();
     }
-
 }

@@ -57,7 +57,7 @@ public class DiscountCasher {
     }
 
     public int getTotalPurchaseAmount() {
-        return totalPurchaseAmount + calculateEventDiscount();
+        return totalPurchaseAmount;
     }
 
     public int getTotalDiscountAmount(OrderManager orderManager) {
@@ -66,5 +66,9 @@ public class DiscountCasher {
         totalDiscountAmount += calculateSpecialDiscount();
         totalDiscountAmount += calculateWeekDiscount(orderManager);
         return totalDiscountAmount;
+    }
+
+    public int getVisitDay() {
+        return visitDay;
     }
 }
