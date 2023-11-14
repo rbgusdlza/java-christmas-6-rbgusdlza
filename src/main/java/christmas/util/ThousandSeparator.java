@@ -1,6 +1,8 @@
 package christmas.util;
 
 public class ThousandSeparator {
+    private static final String MINUS = "-";
+
     private ThousandSeparator() {
     }
 
@@ -16,5 +18,10 @@ public class ThousandSeparator {
             }
         }
         return formattedNumbers.toString();
+    }
+
+    public static String addThousandsSeparatorWithMinus(int money) {
+        String separatedMoney = addThousandsSeparator(money);
+        return MINUS + separatedMoney;
     }
 }

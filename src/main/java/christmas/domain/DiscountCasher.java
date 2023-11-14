@@ -1,21 +1,70 @@
 package christmas.domain;
 
+import java.util.Map;
+
 public class DiscountCasher {
-    private final static int STANDARD_PURCHASE_AMOUNT = 10_000;
-    private int totalDiscountAmount;
+    private static final int STANDARD_PURCHASE_AMOUNT = 10_000;
+    private final int totalPurchaseAmount;
+    private final int visitDay;
+    private final XmasDiscountCalculator xmasDiscountCalculator;
+    private final SpecialDiscountCalculator specialDiscountCalculator;
+    private final WeekDiscountCalculator weekDiscountCalculator;
+    private final EventGiver eventGiver;
 
-    public boolean isDiscountPossible(int totalPurchaseAmount) {
+    public DiscountCasher(int visitDay, int totalPurchaseAmount) {
+        this.visitDay = visitDay;
+        this.totalPurchaseAmount = totalPurchaseAmount;
+        xmasDiscountCalculator = new XmasDiscountCalculator();
+        specialDiscountCalculator = new SpecialDiscountCalculator();
+        weekDiscountCalculator = new WeekDiscountCalculator();
+        eventGiver = new EventGiver();
+    }
+
+    public boolean isDiscountImpossible() {
         if (totalPurchaseAmount >= STANDARD_PURCHASE_AMOUNT) {
-            return true;
+            return false;
         }
-        return false;
+        return true;
     }
 
-    public int getTotalDiscountAmount() {
+    public int calculateXmasDiscount() {
+        if (isDiscountImpossible()) {
+            return 0;
+        }
+        return xmasDiscountCalculator.calculateDiscount(visitDay);
+    }
+
+    public int calculateWeekDiscount(OrderManager orderManager) {
+        if (isDiscountImpossible()) {
+            return 0;
+        }
+        return weekDiscountCalculator.calculateDiscount(visitDay, orderManager);
+    }
+
+    public int calculateSpecialDiscount() {
+        if (isDiscountImpossible()) {
+            return 0;
+        }
+        return specialDiscountCalculator.calculateDiscount(visitDay);
+    }
+
+    public int calculateEventDiscount() {
+        return eventGiver.awardBonusMerchandise(totalPurchaseAmount);
+    }
+
+    public Map<Menu, Integer> getEventMerchandise() {
+        return eventGiver.getBonusMerchandise(totalPurchaseAmount);
+    }
+
+    public int getTotalPurchaseAmount() {
+        return totalPurchaseAmount + calculateEventDiscount();
+    }
+
+    public int getTotalDiscountAmount(OrderManager orderManager) {
+        int totalDiscountAmount = 0;
+        totalDiscountAmount += calculateXmasDiscount();
+        totalDiscountAmount += calculateSpecialDiscount();
+        totalDiscountAmount += calculateWeekDiscount(orderManager);
         return totalDiscountAmount;
-    }
-
-    public void addDiscountAmount(int discountAmount) {
-        totalDiscountAmount += discountAmount;
     }
 }

@@ -11,6 +11,11 @@ public class MessageCatalog {
     public static final String TOTAL_PURCHASE_AMOUNT_MESSAGE = "<할인 전 총주문 금액>";
     public static final String FREE_MENU_MESSAGE = "<증정 메뉴>";
     public static final String BENEFIT_SUMMARY_MESSAGE = "<혜택 내역>";
+    public static final String XMAS_BENEFIT_MESSAGE = "크리스마스 디데이 할인: ";
+    public static final String WEEKDAY_BENEFIT_MESSAGE = "평일 할인: ";
+    public static final String WEEKEND_BENEFIT_MESSAGE = "주말 할인: ";
+    public static final String SPECIAL_BENEFIT_MESSAGE = "특별 할인: ";
+    public static final String EVENT_BENEFIT_MESSAGE = "증정 이벤트: ";
     public static final String TOTAL_DISCOUNT_AMOUNT_MESSAGE = "<총혜택 금액>";
     public static final String ESTIMATED_PAYMENT_AMOUNT_MESSAGE = "<할인 후 예상 결제 금액>";
     public static final String EVENT_BADGE_MESSAGE = "<%d월 이벤트 배지>";

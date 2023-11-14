@@ -10,7 +10,7 @@ public class SpecialDiscountCalculator {
     private final int SPECIAL_DISCOUNT_AMOUNT = 1_000;
 
 
-    public int calculateSpecialDiscount(int visitDay) {
+    public int calculateDiscount(int visitDay) {
         isDayPossible(visitDay);
         if (DecemberStarDays.contains(visitDay)) {
             return SPECIAL_DISCOUNT_AMOUNT;
