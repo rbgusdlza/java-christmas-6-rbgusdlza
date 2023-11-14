@@ -22,6 +22,7 @@ public class XmasEventController {
         getDateAndOrder();
         printOrderDetails();
         printTotalPurchaseAmount();
+        printEachDiscountAmount();
         printTotalDiscountAmount();
     }
 
@@ -40,7 +41,7 @@ public class XmasEventController {
     }
 
     public void printTotalPurchaseAmount() {
-        outputView.printTotalPurchaseAmount();
+        outputView.printTotalPurchaseNotice();
         outputView.printMoney(discountCasher.getTotalPurchaseAmount());
         outputView.divideLine();
 
@@ -49,12 +50,21 @@ public class XmasEventController {
         outputView.divideLine();
     }
 
-    public void printTotalDiscountAmount() {
+    public void printEachDiscountAmount() {
         outputView.printBenefit();
         outputView.printXmasDiscount(discountCasher.calculateXmasDiscount());
         outputView.printWeekDiscount(discountCasher.getVisitDay(), discountCasher.calculateWeekDiscount(orderManager));
         outputView.printSpecialDiscount(discountCasher.calculateSpecialDiscount());
         outputView.printEventDiscount(discountCasher.calculateEventDiscount());
         outputView.printDiscountEmpty();
+        outputView.divideLine();
     }
+
+    public void printTotalDiscountAmount() {
+        outputView.printTotalDiscountNotice();
+        outputView.printDiscount(discountCasher.getTotalDiscountAmount(orderManager));
+        outputView.divideLine();
+    }
+
+
 }

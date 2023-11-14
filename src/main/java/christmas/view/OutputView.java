@@ -41,7 +41,7 @@ public class OutputView {
         System.out.println(ORDER_MENU_MESSAGE);
     }
 
-    public void printTotalPurchaseAmount() {
+    public void printTotalPurchaseNotice() {
         System.out.println(TOTAL_PURCHASE_AMOUNT_MESSAGE);
     }
 
@@ -53,11 +53,11 @@ public class OutputView {
         System.out.println(BENEFIT_SUMMARY_MESSAGE);
     }
 
-    public void printTotalDiscountAmount() {
+    public void printTotalDiscountNotice() {
         System.out.println(TOTAL_DISCOUNT_AMOUNT_MESSAGE);
     }
 
-    public void printPaymentAmount() {
+    public void printPaymentNotice() {
         System.out.println(ESTIMATED_PAYMENT_AMOUNT_MESSAGE);
     }
 

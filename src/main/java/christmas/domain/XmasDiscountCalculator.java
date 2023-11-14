@@ -12,7 +12,6 @@ public class XmasDiscountCalculator {
         if (visitDay > XMAS_DAY) {
             return 0;
         }
-        int xmasDday = XMAS_DAY - visitDay;
-        return STANDARD_DISCOUNT_AMOUNT + xmasDday * 100;
+        return STANDARD_DISCOUNT_AMOUNT + (visitDay - 1) * 100;
     }
 }

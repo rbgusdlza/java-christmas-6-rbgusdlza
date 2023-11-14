@@ -65,6 +65,7 @@ public class DiscountCasher {
         totalDiscountAmount += calculateXmasDiscount();
         totalDiscountAmount += calculateSpecialDiscount();
         totalDiscountAmount += calculateWeekDiscount(orderManager);
+        totalDiscountAmount += calculateEventDiscount();
         return totalDiscountAmount;
     }
 

@@ -23,6 +23,9 @@ public class ThousandSeparator {
 
     public static String addThousandsSeparatorWithMinus(int money) {
         String separatedMoney = addThousandsSeparator(money);
-        return MINUS + separatedMoney;
+        if (money != 0) {
+            return MINUS + separatedMoney;
+        }
+        return separatedMoney;
     }
 }
