@@ -4,6 +4,7 @@ import static christmas.validator.InputValidator.isDayPossible;
 
 public class XmasDiscountCalculator {
     private final int STANDARD_DISCOUNT_AMOUNT = 1_000;
+    private final int EXTRA_DISCOUNT_AMOUNT = 100;
     private final int XMAS_DAY = 25;
 
 
@@ -12,6 +13,6 @@ public class XmasDiscountCalculator {
         if (visitDay > XMAS_DAY) {
             return 0;
         }
-        return STANDARD_DISCOUNT_AMOUNT + (visitDay - 1) * 100;
+        return STANDARD_DISCOUNT_AMOUNT + (visitDay - 1) * EXTRA_DISCOUNT_AMOUNT;
     }
 }

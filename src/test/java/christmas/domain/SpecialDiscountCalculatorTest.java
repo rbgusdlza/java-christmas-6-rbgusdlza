@@ -40,7 +40,7 @@ public class SpecialDiscountCalculatorTest {
         assertEquals(0, discount);
     }
 
-    @DisplayName("입력 가능한 날짜 범위를 벗어나면 예외를 던져야 함")
+    @DisplayName("입력 가능한 날짜 범위를 벗어나면 예외를 던져야 한다.")
     @Test
     public void calculateDiscount_OnInvalidDay_ShouldThrowException() {
         // when, then
