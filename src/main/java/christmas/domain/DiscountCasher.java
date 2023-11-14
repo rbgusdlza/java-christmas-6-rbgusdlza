@@ -56,6 +56,10 @@ public class DiscountCasher {
         return eventGiver.getBonusMerchandise(totalPurchaseAmount);
     }
 
+    public Badge getEventBadge(OrderManager orderManager) {
+        return eventGiver.awardBadge(getTotalDiscountAmount(orderManager));
+    }
+
     public int getTotalPurchaseAmount() {
         return totalPurchaseAmount;
     }

@@ -2,8 +2,6 @@ package christmas.controller;
 
 import christmas.domain.DiscountCasher;
 import christmas.domain.OrderManager;
-import java.util.Map;
-import christmas.domain.Menu;
 import christmas.view.InputView;
 import christmas.view.OutputView;
 
@@ -25,6 +23,7 @@ public class XmasEventController {
         printEachDiscountAmount();
         printTotalDiscountAmount();
         printEstimatePurchaseAmount();
+        printEventBadge();
     }
 
     public void getDateAndOrder() {
@@ -36,7 +35,7 @@ public class XmasEventController {
     }
 
     public void printOrderDetails() {
-        outputView.printMenu();
+        outputView.printMenuNotice();
         outputView.printOrderDetails(orderManager.getOrderDetails());
         outputView.divideLine();
     }
@@ -46,13 +45,13 @@ public class XmasEventController {
         outputView.printMoney(discountCasher.getTotalPurchaseAmount());
         outputView.divideLine();
 
-        outputView.printFreeMenu();
+        outputView.printFreeMenuNotice();
         outputView.printOrderDetails(discountCasher.getEventMerchandise());
         outputView.divideLine();
     }
 
     public void printEachDiscountAmount() {
-        outputView.printBenefit();
+        outputView.printBenefitNotice();
         outputView.printXmasDiscount(discountCasher.calculateXmasDiscount());
         outputView.printWeekDiscount(discountCasher.getVisitDay(), discountCasher.calculateWeekDiscount(orderManager));
         outputView.printSpecialDiscount(discountCasher.calculateSpecialDiscount());
@@ -71,5 +70,10 @@ public class XmasEventController {
         outputView.printPaymentNotice();
         outputView.printMoney(discountCasher.calculateEstimatePurchaseAmount(orderManager));
         outputView.divideLine();
+    }
+
+    public void printEventBadge() {
+        outputView.printBadgeNotice();
+        outputView.printEventBadge(discountCasher.getEventBadge(orderManager));
     }
 }

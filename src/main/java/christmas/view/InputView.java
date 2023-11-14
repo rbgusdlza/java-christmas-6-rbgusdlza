@@ -19,9 +19,9 @@ import java.util.Map;
 public class InputView {
 
     public int readVisitDay() {
+        System.out.printf(REQUEST_VISIT_DAY + LINE_DIVIDER, EVENT_MONTH);
+        String input = Console.readLine();
         try {
-            System.out.printf(REQUEST_VISIT_DAY + LINE_DIVIDER, EVENT_MONTH);
-            String input = Console.readLine();
             isVisitDayValid(input);
             return Integer.parseInt(input);
         } catch (Exception error) {
@@ -31,9 +31,9 @@ public class InputView {
     }
 
     public Map<Menu, Integer> readOrderDetails() {
+        System.out.println(REQUEST_ORDER);
+        String input = Console.readLine();
         try {
-            System.out.println(REQUEST_ORDER);
-            String input = Console.readLine();
             return processOrderInput(input);
         } catch (Exception error) {
             System.out.println(error.getMessage());

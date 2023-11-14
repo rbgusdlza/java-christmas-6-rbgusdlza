@@ -20,6 +20,7 @@ import static christmas.constant.MessageCatalog.LINE_DIVIDER;
 import static christmas.util.ThousandSeparator.addThousandsSeparator;
 import static christmas.util.ThousandSeparator.addThousandsSeparatorWithMinus;
 
+import christmas.domain.Badge;
 import christmas.domain.Menu;
 import christmas.validator.WeekendChecker;
 import java.util.Map;
@@ -37,7 +38,7 @@ public class OutputView {
         System.out.println();
     }
 
-    public void printMenu() {
+    public void printMenuNotice() {
         System.out.println(ORDER_MENU_MESSAGE);
     }
 
@@ -45,11 +46,11 @@ public class OutputView {
         System.out.println(TOTAL_PURCHASE_AMOUNT_MESSAGE);
     }
 
-    public void printFreeMenu() {
+    public void printFreeMenuNotice() {
         System.out.println(FREE_MENU_MESSAGE);
     }
 
-    public void printBenefit() {
+    public void printBenefitNotice() {
         System.out.println(BENEFIT_SUMMARY_MESSAGE);
     }
 
@@ -61,7 +62,7 @@ public class OutputView {
         System.out.println(ESTIMATED_PAYMENT_AMOUNT_MESSAGE);
     }
 
-    public void printBadge() {
+    public void printBadgeNotice() {
         System.out.printf(EVENT_BADGE_MESSAGE + LINE_DIVIDER, EVENT_MONTH);
     }
 
@@ -123,5 +124,12 @@ public class OutputView {
 
     public void printEventDiscount(int discountAmount) {
         printBenefit(EVENT_BENEFIT_MESSAGE, discountAmount);
+    }
+
+    public void printEventBadge(Badge badge) {
+        if (badge == null) {
+            System.out.println(NO_INPUT);
+        }
+        System.out.println(badge);
     }
 }

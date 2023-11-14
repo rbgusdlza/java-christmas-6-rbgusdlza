@@ -24,7 +24,7 @@ public class EventGiver {
         return bonusDetails;
     }
 
-    public Badge awardBadge(int totalPurchaseAmount, int totalDiscountAmount) {
+    public Badge awardBadge(int totalDiscountAmount) {
         return new Badge(totalDiscountAmount);
     }
 }

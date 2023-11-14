@@ -17,7 +17,7 @@ public class InputValidator {
 
     public static void isVisitDayValid(String input) {
         isInputEmpty(input);
-        isNumeric(input);
+        isNumericDay(input);
         int visitDay = Integer.parseInt(input);
         isDayPossible(visitDay);
     }
@@ -28,7 +28,7 @@ public class InputValidator {
         }
     }
 
-    public static void isNumeric(String input) {
+    public static void isNumericDay(String input) {
         if (!(input.charAt(0) >= '1' && input.charAt(0) <= '9')) {
             throw new IllegalArgumentException(ErrorMessage.INVALID_VISIT_DAY_INPUT.getMessage());
         }
@@ -68,7 +68,18 @@ public class InputValidator {
 
     public static void isMenuCountValid(String menuCount) {
         isInputEmpty(menuCount);
-        isNumeric(menuCount);
+        isNumericCount(menuCount);
+    }
+
+    public static void isNumericCount(String input) {
+        if (!(input.charAt(0) >= '1' && input.charAt(0) <= '9')) {
+            throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
+        }
+        for (int i = 1; i < input.length(); i++) {
+            if (!(input.charAt(i) >= '0' && input.charAt(i) <= '9')) {
+                throw new IllegalArgumentException(ErrorMessage.INVALID_ORDER_DETAILS_INPUT.getMessage());
+            }
+        }
     }
 
     public static void isMenuDuplicate(Map<Menu, Integer> orderDetails, Menu menu) {
