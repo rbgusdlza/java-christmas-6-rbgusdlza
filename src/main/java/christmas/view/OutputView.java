@@ -16,7 +16,6 @@ import static christmas.constant.MessageCatalog.BENEFIT_ANNOUNCEMENT;
 import static christmas.constant.MessageCatalog.WEEKDAY_BENEFIT_MESSAGE;
 import static christmas.constant.MessageCatalog.WEEKEND_BENEFIT_MESSAGE;
 import static christmas.constant.MessageCatalog.XMAS_BENEFIT_MESSAGE;
-import static christmas.constant.MessageCatalog.LINE_DIVIDER;
 import static christmas.util.ThousandSeparator.addThousandsSeparator;
 import static christmas.util.ThousandSeparator.addThousandsSeparatorWithMinus;
 
@@ -30,12 +29,14 @@ public class OutputView {
 
 
     public void printGreeting() {
-        System.out.printf(GREETING + LINE_DIVIDER, EVENT_MONTH);
+        System.out.printf(GREETING, EVENT_MONTH);
+        divideLine();
     }
 
     public void printPreview(int visitDay) {
-        System.out.printf(BENEFIT_ANNOUNCEMENT + LINE_DIVIDER, EVENT_MONTH, visitDay);
-        System.out.println();
+        System.out.printf(BENEFIT_ANNOUNCEMENT, EVENT_MONTH, visitDay);
+        divideLine();
+        divideLine();
     }
 
     public void printMenuNotice() {
@@ -63,7 +64,8 @@ public class OutputView {
     }
 
     public void printBadgeNotice() {
-        System.out.printf(EVENT_BADGE_MESSAGE + LINE_DIVIDER, EVENT_MONTH);
+        System.out.printf(EVENT_BADGE_MESSAGE, EVENT_MONTH);
+        divideLine();
     }
 
     public void divideLine() {
@@ -71,15 +73,14 @@ public class OutputView {
     }
 
     public void printOrderDetails(Map<Menu, Integer> orderDetails) {
-        if (orderDetails == null) {
+        if (orderDetails == null || orderDetails.isEmpty()) {
             System.out.println(NO_INPUT);
             return;
         }
-        for (Map.Entry<Menu, Integer> orderEntry : orderDetails.entrySet()) {
-            Menu menu = orderEntry.getKey();
-            Integer menuCount = orderEntry.getValue();
-            System.out.println(menu + " " + menuCount + "개");
-        }
+
+        orderDetails.forEach((menu, count) ->
+                System.out.printf("%s %d개%n", menu, count)
+        );
     }
 
     public void printMoney(int money) {

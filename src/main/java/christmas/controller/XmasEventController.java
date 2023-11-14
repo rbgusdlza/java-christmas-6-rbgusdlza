@@ -19,11 +19,7 @@ public class XmasEventController {
     public void start() {
         getDateAndOrder();
         printOrderDetails();
-        printTotalPurchaseAmount();
-        printEachDiscountAmount();
-        printTotalDiscountAmount();
-        printEstimatePurchaseAmount();
-        printEventBadge();
+        printEventResult();
     }
 
     public void getDateAndOrder() {
@@ -38,6 +34,14 @@ public class XmasEventController {
         outputView.printMenuNotice();
         outputView.printOrderDetails(orderManager.getOrderDetails());
         outputView.divideLine();
+    }
+
+    public void printEventResult() {
+        printTotalPurchaseAmount();
+        printEachDiscountAmount();
+        printTotalDiscountAmount();
+        printEstimatePurchaseAmount();
+        printEventBadge();
     }
 
     public void printTotalPurchaseAmount() {
