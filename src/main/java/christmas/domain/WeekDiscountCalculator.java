@@ -7,7 +7,7 @@ import christmas.validator.WeekendChecker;
 public class WeekDiscountCalculator {
     private final int WEEK_DISCOUNT_AMOUNT = 2_023;
     private final String WEEKEND_DISCOUNT_MENU_TYPE = "main";
-    private final String WEEKDAY_DISCOUNT_MENU_TYPE = "desert";
+    private final String WEEKDAY_DISCOUNT_MENU_TYPE = "dessert";
 
     public int calculateDiscount(int visitDay, OrderManager orderManager) {
         isDayPossible(visitDay);

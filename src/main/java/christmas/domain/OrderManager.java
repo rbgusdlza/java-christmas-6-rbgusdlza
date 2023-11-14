@@ -1,7 +1,6 @@
 package christmas.domain;
 
 import java.util.Map;
-import java.util.Objects;
 
 public class OrderManager {
     private final Map<Menu, Integer> orderDetails;
@@ -11,26 +10,16 @@ public class OrderManager {
     }
 
     public int calculatePurchaseAmount() {
-        int totalPurchaseAmount = 0;
-        for (Map.Entry<Menu, Integer> orderEntry : orderDetails.entrySet()) {
-            Menu menu = orderEntry.getKey();
-            Integer menuCount = orderEntry.getValue();
-            int menuPrice = menu.getPrice();
-            totalPurchaseAmount += menuPrice * menuCount;
-        }
-        return totalPurchaseAmount;
+        return orderDetails.entrySet().stream()
+                .mapToInt(entry -> entry.getKey().getPrice() * entry.getValue())
+                .sum();
     }
 
     public int countFoodTypes(String typeName) {
-        int typeCount = 0;
-        for (Map.Entry<Menu, Integer> orderEntry : orderDetails.entrySet()) {
-            Menu menu = orderEntry.getKey();
-            Integer menuCount = orderEntry.getValue();
-            if (Objects.equals(menu.getType(), typeName)) {
-                typeCount += menuCount;
-            }
-        }
-        return typeCount;
+        return orderDetails.entrySet().stream()
+                .filter(entry -> typeName.equals(entry.getKey().getType()))
+                .mapToInt(Map.Entry::getValue)
+                .sum();
     }
 
     public Map<Menu, Integer> getOrderDetails() {

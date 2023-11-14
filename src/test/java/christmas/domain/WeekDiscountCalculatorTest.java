@@ -41,7 +41,7 @@ public class WeekDiscountCalculatorTest {
         assertEquals(WEEK_DISCOUNT_AMOUNT * NUMBER_OF_FOOD, discount);
     }
 
-    @DisplayName("평일에 'desert' 메뉴에 대한 할인을 계산하는 기능을 테스트한다.")
+    @DisplayName("평일에 'dessert' 메뉴에 대한 할인을 계산하는 기능을 테스트한다.")
     @Test
     public void calculateDiscount_OnWeekday_ShouldReturnCorrectDiscountForDesert() {
         // when
