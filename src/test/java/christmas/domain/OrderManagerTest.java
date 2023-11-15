@@ -9,9 +9,9 @@ import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 public class OrderManagerTest {
-    private static final int NUMBER_OF_T_BONE_STEAK = 2;
-    private static final int NUMBER_OF_CAESAR_SALAD = 1;
-    private static final int NUMBER_OF_ICE_CREAM = 3;
+    private static final int NUMBER_OF_MAIN = 2;
+    private static final int NUMBER_OF_APPETIZER = 1;
+    private static final int NUMBER_OF_DESSERT = 3;
 
     private OrderManager orderManager;
 
@@ -19,9 +19,9 @@ public class OrderManagerTest {
     public void setUp() {
         // given
         Map<Menu, Integer> orderDetails = new HashMap<>();
-        orderDetails.put(Menu.T_BONE_STEAK, NUMBER_OF_T_BONE_STEAK);
-        orderDetails.put(Menu.CAESAR_SALAD, NUMBER_OF_CAESAR_SALAD);
-        orderDetails.put(Menu.ICE_CREAM, NUMBER_OF_ICE_CREAM);
+        orderDetails.put(Menu.T_BONE_STEAK, NUMBER_OF_MAIN);
+        orderDetails.put(Menu.CAESAR_SALAD, NUMBER_OF_APPETIZER);
+        orderDetails.put(Menu.ICE_CREAM, NUMBER_OF_DESSERT);
 
         orderManager = new OrderManager(orderDetails);
     }
@@ -33,9 +33,9 @@ public class OrderManagerTest {
         int totalAmount = orderManager.calculatePurchaseAmount();
 
         // then
-        assertEquals(Menu.T_BONE_STEAK.getPrice() * NUMBER_OF_T_BONE_STEAK
-                + Menu.CAESAR_SALAD.getPrice() * NUMBER_OF_CAESAR_SALAD
-                + Menu.ICE_CREAM.getPrice() * NUMBER_OF_ICE_CREAM, totalAmount);
+        assertEquals(Menu.T_BONE_STEAK.getPrice() * NUMBER_OF_MAIN
+                + Menu.CAESAR_SALAD.getPrice() * NUMBER_OF_APPETIZER
+                + Menu.ICE_CREAM.getPrice() * NUMBER_OF_DESSERT, totalAmount);
     }
 
     @DisplayName("특정 음식 유형의 주문 개수가 정확하게 계산되는지 테스트한다.")
@@ -45,7 +45,7 @@ public class OrderManagerTest {
         int mainCount = orderManager.countFoodTypes("main");
 
         // then
-        assertEquals(NUMBER_OF_T_BONE_STEAK, mainCount);
+        assertEquals(NUMBER_OF_MAIN, mainCount);
     }
 
     @Test
@@ -54,7 +54,7 @@ public class OrderManagerTest {
         int dessertCount = orderManager.countFoodTypes("dessert");
 
         // then
-        assertEquals(NUMBER_OF_ICE_CREAM, dessertCount);
+        assertEquals(NUMBER_OF_DESSERT, dessertCount);
     }
 
     @Test
@@ -63,6 +63,6 @@ public class OrderManagerTest {
         int appetizerCount = orderManager.countFoodTypes("appetizer");
 
         // then
-        assertEquals(NUMBER_OF_CAESAR_SALAD, appetizerCount);
+        assertEquals(NUMBER_OF_APPETIZER, appetizerCount);
     }
 }
