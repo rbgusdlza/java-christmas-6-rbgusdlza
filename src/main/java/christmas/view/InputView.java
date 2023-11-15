@@ -16,6 +16,8 @@ import java.util.HashMap;
 import java.util.Map;
 
 public class InputView {
+    private static final String INPUT_SEPARATOR = ",";
+    private static final String ITEM_SEPARATOR = "-";
 
     public int readVisitDay() {
         System.out.printf(REQUEST_VISIT_DAY, EVENT_MONTH);
@@ -53,9 +55,9 @@ public class InputView {
         Map<Menu, Integer> orderDetails = new HashMap<>();
         isInputFormatValid(input);
 
-        String[] items = input.split(",");
+        String[] items = input.split(INPUT_SEPARATOR);
         for (String item : items) {
-            String[] subItems = item.split("-");
+            String[] subItems = item.split(ITEM_SEPARATOR);
             processOrderItem(orderDetails, subItems);
         }
 
