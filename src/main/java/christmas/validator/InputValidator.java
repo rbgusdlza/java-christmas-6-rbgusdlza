@@ -1,9 +1,6 @@
 package christmas.validator;
 
 import christmas.constant.ErrorMessage;
-import christmas.domain.Menu;
-import java.util.Map;
-import java.util.Objects;
 
 public class InputValidator {
     private static int FIRST_DAY_OF_DECEMBER = 1;

@@ -7,7 +7,6 @@ public class XmasDiscountCalculator {
     private final int EXTRA_DISCOUNT_AMOUNT = 100;
     private final int XMAS_DAY = 25;
 
-
     public int calculateDiscount(int visitDay) {
         isDayPossible(visitDay);
         if (visitDay > XMAS_DAY) {
